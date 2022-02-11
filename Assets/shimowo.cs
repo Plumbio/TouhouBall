@@ -7,7 +7,7 @@ public class shimowo : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        print("owo");
+        print("ewé");
     }
 
     // Update is called once per frame
