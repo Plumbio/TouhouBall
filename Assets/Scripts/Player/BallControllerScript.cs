@@ -28,4 +28,18 @@ public class BallControllerScript : MonoBehaviour {
         yield return new WaitForFixedUpdate();
         transform.Translate(ballDirection * speed * Time.deltaTime);
     }
+
+    private void OnTriggerEnter (Collider col) {
+        if (col.CompareTag("Wall")) {
+            Vector3 ballPos = transform.position;
+            Vector3 colPoint = col.ClosestPoint(ballPos);
+            Vector3 newDirection = Vector3.zero;
+
+            if (Mathf.Abs(ballPos.x - colPoint.x) > Mathf.Abs(ballPos.z - colPoint.z))
+                newDirection = new Vector3(ballDirection.x * -1, 0, ballDirection.z);
+            else newDirection = new Vector3(ballDirection.x, 0, ballDirection.z * -1);
+
+            Hit(newDirection);
+        }
+    }
 }
