@@ -1023,6 +1023,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ball
       objectReference: {fileID: 0}
+    - target: {fileID: 4751646861990342513, guid: 391cfce8acda7454d869f337ccf94a02,
+        type: 3}
+      propertyPath: m_TagString
+      value: Ball
+      objectReference: {fileID: 0}
     - target: {fileID: 4751646861990342518, guid: 391cfce8acda7454d869f337ccf94a02,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1090,6 +1095,11 @@ PrefabInstance:
     - target: {fileID: 4773583360920265893, guid: 58d51e800da63c143ab2c59ed22d70c7,
         type: 3}
       propertyPath: m_Name
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773583360920265893, guid: 58d51e800da63c143ab2c59ed22d70c7,
+        type: 3}
+      propertyPath: m_TagString
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 4773583360920265894, guid: 58d51e800da63c143ab2c59ed22d70c7,
