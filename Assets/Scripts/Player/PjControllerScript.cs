@@ -17,6 +17,8 @@ public class PjControllerScript : MonoBehaviour {
     float verInputValue;
 
     float speed = 5f;
+    bool isTouchingBall;
+    public BallControllerScript ballScript;
 
     // Start is called before the first frame update
     void Start() {
@@ -36,6 +38,9 @@ public class PjControllerScript : MonoBehaviour {
         }
         if(horInputValue != 0 || verInputValue != 0)
             StartCoroutine("AverageMoevement");
+
+        if (isTouchingBall && Input.GetMouseButtonDown(0))
+            HitBall();
     }
 
     void HorizontalMovement (float value) {
@@ -61,5 +66,31 @@ public class PjControllerScript : MonoBehaviour {
     }
     void StopMovement () {
         //evento pa indicar al server que el jugador dejó de moverse
+    }
+
+    private void OnTriggerEnter (Collider col) {
+        if (col.CompareTag("Ball")) {
+            isTouchingBall = true;
+        }
+    }
+    private void OnTriggerExit (Collider col) {
+        if (col.CompareTag("Ball")) {
+            isTouchingBall = false;
+        }
+    }
+
+    void HitBall () {
+        Vector3 hitDirection = Vector3.zero;
+        Vector3 mouseWorldPos;
+
+        Plane plane = new Plane(Vector3.up, Vector3.up);
+        float distance;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (plane.Raycast(ray, out distance)) {
+            mouseWorldPos = ray.GetPoint(distance);
+            hitDirection = mouseWorldPos - transform.position;
+        }
+
+        ballScript.Hit(hitDirection);
     }
 }

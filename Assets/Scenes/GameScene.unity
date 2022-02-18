@@ -1011,6 +1011,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1883202588}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &1893845475 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4751646861990342517, guid: 391cfce8acda7454d869f337ccf94a02,
+    type: 3}
+  m_PrefabInstance: {fileID: 4751646861789619515}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba171605c7c6cde4c909d3cd3f821084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4751646861789619515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1036,7 +1048,7 @@ PrefabInstance:
     - target: {fileID: 4751646861990342518, guid: 391cfce8acda7454d869f337ccf94a02,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.75
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4751646861990342518, guid: 391cfce8acda7454d869f337ccf94a02,
         type: 3}
@@ -1157,5 +1169,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4773583360920265895, guid: 58d51e800da63c143ab2c59ed22d70c7,
+        type: 3}
+      propertyPath: m_Radius
+      value: 0.8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4773583360920265898, guid: 58d51e800da63c143ab2c59ed22d70c7,
+        type: 3}
+      propertyPath: ballScript
+      value: 
+      objectReference: {fileID: 1893845475}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d51e800da63c143ab2c59ed22d70c7, type: 3}

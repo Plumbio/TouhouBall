@@ -21,7 +21,8 @@ public class BallControllerScript : MonoBehaviour {
     }
 
     public void Hit (Vector3 direction) {
-        ballDirection = direction;
+        Vector3 newDirection = new Vector3(direction.x, 0, direction.z);
+        ballDirection = newDirection.normalized;
     }
 
     IEnumerator Displace () {
