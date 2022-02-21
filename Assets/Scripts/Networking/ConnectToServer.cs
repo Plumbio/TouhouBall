@@ -14,6 +14,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     {
         if (usernameInput.text.Length >= 1)
         {
+            print("se conecto al lobby");
             PhotonNetwork.NickName = usernameInput.text;
             buttonText.text = "Connecting...";
             PhotonNetwork.ConnectUsingSettings();
