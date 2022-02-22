@@ -17,6 +17,7 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
             print("se conecto al lobby");
             PhotonNetwork.NickName = usernameInput.text;
             buttonText.text = "Connecting...";
+            PhotonNetwork.AutomaticallySyncScene = true;
             PhotonNetwork.ConnectUsingSettings();
         }
     }

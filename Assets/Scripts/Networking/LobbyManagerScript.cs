@@ -19,9 +19,18 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
     public List<PlayerItemScript>  playerItemsList = new List<PlayerItemScript>();
     public PlayerItemScript playerItemPrefab;
     public Transform playerItemparent;
+    public GameObject playButton;
 
     private void Start() {
         PhotonNetwork.JoinLobby();
+    }
+    private void Update() {
+        if (PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount > 2)
+        {
+            playButton.SetActive(true);
+        }else{
+            playButton.SetActive(false);
+        }
     }
 
     public void OnClickCreate() {
@@ -123,5 +132,9 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
     public override void OnPlayerLeftRoom(Player otherPlayer)
     {
         UpdatePlayerList();
+    }
+    public void OnClickPlayButton()
+    {
+        PhotonNetwork.LoadLevel("GameScene");
     }
 }
