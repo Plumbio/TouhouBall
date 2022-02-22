@@ -504,7 +504,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 20
-  orthographic: 0
+  orthographic: 1
   orthographic size: 5
   m_Depth: -1
   m_CullingMask:
@@ -528,13 +528,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.3826832, y: 0.00000017677515, z: 0.0000004267732, w: 0.9238797}
-  m_LocalPosition: {x: -0, y: 17.44, z: -17.94}
+  m_LocalRotation: {x: 0.53729963, y: 0, z: 0, w: 0.8433915}
+  m_LocalPosition: {x: -0, y: 23.63, z: -10.86}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45.000004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 65, y: 0, z: 0}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1179,5 +1179,6 @@ PrefabInstance:
       propertyPath: ballScript
       value: 
       objectReference: {fileID: 1893845475}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4773583360920265897, guid: 58d51e800da63c143ab2c59ed22d70c7, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 58d51e800da63c143ab2c59ed22d70c7, type: 3}
