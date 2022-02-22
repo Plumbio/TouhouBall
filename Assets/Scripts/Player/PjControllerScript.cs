@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using Photon.Pun;
 
 [System.Serializable]
 public class InputHorizontalAxis : UnityEvent<float> { }
@@ -18,16 +19,24 @@ public class PjControllerScript : MonoBehaviour {
 
     float speed = 5f;
     bool isTouchingBall;
-    public BallControllerScript ballScript;
+
+    BallControllerScript ballScript;
+    PhotonView punView;
 
     // Start is called before the first frame update
     void Start() {
+        ballScript = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallControllerScript>();
+        punView = GetComponent<PhotonView>();
+
         inputHorizontalAxis.AddListener(HorizontalMovement);
         inputVerticalAxis.AddListener(VerticalMovement);
     }
 
     // Update is called once per frame
     void Update() {
+        if (!punView.IsMine)
+            return;
+
         if(Input.GetAxis("Horizontal") != horInputValue) {
             horInputValue = Input.GetAxis("Horizontal");
             inputHorizontalAxis.Invoke(horInputValue);
