@@ -10,11 +10,11 @@ EditorBuildSettings:
     guid: 0b78fb889512cc04887fce90f710051a
   - enabled: 1
     path: Assets/Scenes/ConnectToServer.unity
-    guid: 22e12868ac37ef04c96c62bb443233a3
+    guid: 0107f0f3436319840bbbda158d035d11
   - enabled: 1
     path: Assets/Scenes/LobbyScene.unity
     guid: c7b2c61b5f93b3543bfc3b7bbe2a8bf6
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/GameScene.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
   m_configObjects: {}
