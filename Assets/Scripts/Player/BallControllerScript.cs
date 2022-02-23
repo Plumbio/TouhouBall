@@ -17,7 +17,7 @@ public class BallControllerScript : MonoBehaviour {
 
     void Update() {
         if (moving)
-            StartCoroutine("Displace");
+            Displace();
     }
 
     public void Hit (Vector3 direction) {
@@ -25,8 +25,7 @@ public class BallControllerScript : MonoBehaviour {
         ballDirection = newDirection.normalized;
     }
 
-    IEnumerator Displace () {
-        yield return new WaitForFixedUpdate();
+    void Displace () {
         transform.Translate(ballDirection * speed * Time.deltaTime);
     }
 

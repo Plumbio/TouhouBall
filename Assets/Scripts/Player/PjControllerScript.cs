@@ -45,8 +45,8 @@ public class PjControllerScript : MonoBehaviour {
             verInputValue = Input.GetAxis("Vertical");
             inputVerticalAxis.Invoke(verInputValue);
         }
-        if(horInputValue != 0 || verInputValue != 0)
-            StartCoroutine("AverageMoevement");
+        if (horInputValue != 0 || verInputValue != 0)
+            AverageMoevement();
 
         if (isTouchingBall && Input.GetMouseButtonDown(0))
             HitBall();
@@ -68,8 +68,7 @@ public class PjControllerScript : MonoBehaviour {
         //gameObject.transform.Translate(Vector3.forward * speed * Time.deltaTime);
         //StartCoroutine("AverageMoevement");
     }
-    IEnumerator AverageMoevement () {
-        yield return new WaitForFixedUpdate();
+    void AverageMoevement () {
         Vector3 movementVector = new Vector3(horInputValue, 0, verInputValue).normalized;
         gameObject.transform.Translate(movementVector * speed * Time.deltaTime);
     }
