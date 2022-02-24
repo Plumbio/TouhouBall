@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Photon.Pun;
 
 public class BallControllerScript : MonoBehaviour {
 
@@ -8,11 +9,15 @@ public class BallControllerScript : MonoBehaviour {
     Vector3 ballDirection;
     bool moving;
 
+    [HideInInspector]
+    public PhotonView punView;
+
     void Start() {
-        //test code
+        punView = GetComponent<PhotonView>();
+        /*test code
         ballDirection = new Vector3(1, 0, 0.6f).normalized;
         moving = true;
-        //test code
+        test code*/
     }
 
     void Update() {
@@ -20,9 +25,12 @@ public class BallControllerScript : MonoBehaviour {
             Displace();
     }
 
-    public void Hit (Vector3 direction) {
+    [PunRPC]
+    public void Hit (Vector3 direction, Vector3 position) {
+        transform.position = new Vector3(position.x, 1, position.z);
         Vector3 newDirection = new Vector3(direction.x, 0, direction.z);
         ballDirection = newDirection.normalized;
+        moving = true;
     }
 
     void Displace () {
@@ -39,7 +47,7 @@ public class BallControllerScript : MonoBehaviour {
                 newDirection = new Vector3(ballDirection.x * -1, 0, ballDirection.z);
             else newDirection = new Vector3(ballDirection.x, 0, ballDirection.z * -1);
 
-            Hit(newDirection);
+            Hit(newDirection, transform.position);
         }
     }
 }

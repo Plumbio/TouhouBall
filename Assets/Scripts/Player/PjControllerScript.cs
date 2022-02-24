@@ -21,11 +21,15 @@ public class PjControllerScript : MonoBehaviour {
     bool isTouchingBall;
 
     BallControllerScript ballScript;
+    PhotonView ballPunView;
+    int ballPunID;
     PhotonView punView;
 
     // Start is called before the first frame update
     void Start() {
         ballScript = GameObject.FindGameObjectWithTag("Ball").GetComponent<BallControllerScript>();
+        ballPunView = ballScript.GetComponent<PhotonView>();
+        ballPunID = ballPunView.ViewID;
         punView = GetComponent<PhotonView>();
 
         inputHorizontalAxis.AddListener(HorizontalMovement);
@@ -99,6 +103,7 @@ public class PjControllerScript : MonoBehaviour {
             hitDirection = mouseWorldPos - transform.position;
         }
 
-        ballScript.Hit(hitDirection);
+        //ballScript.Hit(hitDirection, ballScript.transform.position);
+        ballScript.punView.RPC("Hit", RpcTarget.All, hitDirection, ballScript.transform.position);
     }
 }

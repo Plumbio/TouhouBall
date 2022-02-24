@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4751646861990342518}
   - component: {fileID: 4751646861990342517}
+  - component: {fileID: 876144273258812162}
   - component: {fileID: 4751646861990342519}
   - component: {fileID: 4751646861990342512}
   m_Layer: 0
@@ -46,6 +47,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba171605c7c6cde4c909d3cd3f821084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  punView: {fileID: 0}
+--- !u!114 &876144273258812162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4751646861990342513}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents: []
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!54 &4751646861990342519
 Rigidbody:
   m_ObjectHideFlags: 0
