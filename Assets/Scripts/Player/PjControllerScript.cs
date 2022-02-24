@@ -24,6 +24,7 @@ public class PjControllerScript : MonoBehaviour {
     PhotonView ballPunView;
     int ballPunID;
     PhotonView punView;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start() {
@@ -31,6 +32,7 @@ public class PjControllerScript : MonoBehaviour {
         ballPunView = ballScript.GetComponent<PhotonView>();
         ballPunID = ballPunView.ViewID;
         punView = GetComponent<PhotonView>();
+        rb = GetComponent<Rigidbody>();
 
         inputHorizontalAxis.AddListener(HorizontalMovement);
         inputVerticalAxis.AddListener(VerticalMovement);
@@ -38,7 +40,7 @@ public class PjControllerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (!punView.IsMine)
+        if (PhotonNetwork.IsConnected && !punView.IsMine)
             return;
 
         if(Input.GetAxis("Horizontal") != horInputValue) {
@@ -103,7 +105,18 @@ public class PjControllerScript : MonoBehaviour {
             hitDirection = mouseWorldPos - transform.position;
         }
 
-        //ballScript.Hit(hitDirection, ballScript.transform.position);
-        ballScript.punView.RPC("Hit", RpcTarget.All, hitDirection, ballScript.transform.position);
+        if(PhotonNetwork.IsConnected)
+            ballScript.punView.RPC("Hit", RpcTarget.All, hitDirection, ballScript.transform.position, true);
+        else ballScript.Hit(hitDirection, ballScript.transform.position, true);
+    }
+
+    [PunRPC]
+    public void BallCrush (Vector3 fullVector) {
+        if (!punView.IsMine)
+            return;
+
+        rb.velocity = fullVector;
+        ballPunView.RPC("Hit", RpcTarget.All, ballScript.ballDirection * -1, ballScript.transform.position, false);
+        ballPunView.RPC("SetSpeed", RpcTarget.All, ballScript.speedBase);
     }
 }
