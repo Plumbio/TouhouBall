@@ -10,6 +10,9 @@ public class ConnectToServer : MonoBehaviourPunCallbacks
     public InputField usernameInput;
     public Text buttonText;
 
+    private void Start() {
+        FindObjectOfType<AudioManagerScript>().Stop("MainTheme");
+    }
     public void OnClickConnect() 
     {
         if (usernameInput.text.Length >= 1)
