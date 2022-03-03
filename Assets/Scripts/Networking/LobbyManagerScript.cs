@@ -25,10 +25,10 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
         PhotonNetwork.JoinLobby();
     }
     private void Update() {
-        if (!playButton.activeInHierarchy && PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 1)
+        if (!playButton.activeInHierarchy && PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount >= 2)
         {
             playButton.SetActive(true);
-        }else if(playButton.activeInHierarchy && PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount < 1) {
+        }else if(playButton.activeInHierarchy && PhotonNetwork.IsMasterClient && PhotonNetwork.CurrentRoom.PlayerCount < 2) {
             playButton.SetActive(false);
         }
     }
