@@ -64,7 +64,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 2609adffd90d8da458bccb1206a83d6f, type: 3}
+  m_Sprite: {fileID: 6887459426824070473, guid: f7f27a210d470dd4c9dafbe7959fabc4,
+    type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -392,8 +393,10 @@ MonoBehaviour:
   rightArrowButton: {fileID: 1765814322363177779}
   playerAvatar: {fileID: 7038695052443851742}
   avatars:
-  - {fileID: 21300000, guid: 2609adffd90d8da458bccb1206a83d6f, type: 3}
-  - {fileID: 21300000, guid: 8c87e8c7ca675334caeee0db544b14df, type: 3}
+  - {fileID: 6887459426824070473, guid: f7f27a210d470dd4c9dafbe7959fabc4, type: 3}
+  - {fileID: -2074633490011203935, guid: f7f27a210d470dd4c9dafbe7959fabc4, type: 3}
+  - {fileID: -1329004050037052870, guid: f7f27a210d470dd4c9dafbe7959fabc4, type: 3}
+  - {fileID: -2283051529349742563, guid: f7f27a210d470dd4c9dafbe7959fabc4, type: 3}
 --- !u!1 &2434969975861229369
 GameObject:
   m_ObjectHideFlags: 0

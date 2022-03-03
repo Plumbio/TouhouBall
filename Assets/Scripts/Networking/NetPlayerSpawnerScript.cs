@@ -6,10 +6,12 @@ using Photon.Pun;
 public class NetPlayerSpawnerScript : MonoBehaviour
 {
 
-    public GameObject playerPrefab;
+    public GameObject[] playerPrefabs;
+    
 
     void Start() {
-        PhotonNetwork.Instantiate(playerPrefab.name, transform.position + Vector3.up, Quaternion.identity);
+        GameObject playerToSpawn = playerPrefabs[(int)PhotonNetwork.LocalPlayer.CustomProperties["playerAvatar"]];
+        PhotonNetwork.Instantiate(playerToSpawn.name, transform.position + Vector3.up, Quaternion.identity);
     }
 
     // Update is called once per frame

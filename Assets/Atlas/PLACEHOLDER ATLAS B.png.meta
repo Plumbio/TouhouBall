@@ -1,0 +1,416 @@
+fileFormatVersion: 2
+guid: f7f27a210d470dd4c9dafbe7959fabc4
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 307566928634367714
+    second: PLACEHOLDER ATLAS B_0
+  - first:
+      213: -8633230412800635711
+    second: PLACEHOLDER ATLAS B_1
+  - first:
+      213: 411974784659277695
+    second: PLACEHOLDER ATLAS B_2
+  - first:
+      213: -6867020562933386927
+    second: PLACEHOLDER ATLAS B_3
+  - first:
+      213: 6887459426824070473
+    second: PLACEHOLDER ATLAS B_4
+  - first:
+      213: -2074633490011203935
+    second: PLACEHOLDER ATLAS B_5
+  - first:
+      213: -3986145208775985553
+    second: PLACEHOLDER ATLAS B_6
+  - first:
+      213: -5871203716976585672
+    second: PLACEHOLDER ATLAS B_7
+  - first:
+      213: 7931094687517026978
+    second: PLACEHOLDER ATLAS B_8
+  - first:
+      213: 8125983526018556093
+    second: PLACEHOLDER ATLAS B_9
+  - first:
+      213: -1329004050037052870
+    second: PLACEHOLDER ATLAS B_10
+  - first:
+      213: 5448642397005390843
+    second: PLACEHOLDER ATLAS B_11
+  - first:
+      213: -2283051529349742563
+    second: PLACEHOLDER ATLAS B_12
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: -1
+    aniso: 1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: -1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_0
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 857
+        width: 374
+        height: 163
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2eec8e5fd72b44400800000000000000
+      internalID: 307566928634367714
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_1
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 856
+        width: 385
+        height: 168
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc4bec2eaa903880800000000000000
+      internalID: -8633230412800635711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_2
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 770
+        width: 243
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f77c80842e0a7b500800000000000000
+      internalID: 411974784659277695
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_3
+      rect:
+        serializedVersion: 2
+        x: 18
+        y: 737
+        width: 200
+        height: 35
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1517d095e2173b0a0800000000000000
+      internalID: -6867020562933386927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_4
+      rect:
+        serializedVersion: 2
+        x: 498
+        y: 599
+        width: 235
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 945a3cc7bdb259f50800000000000000
+      internalID: 6887459426824070473
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_5
+      rect:
+        serializedVersion: 2
+        x: 778
+        y: 603
+        width: 236
+        height: 242
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1a6d0cc25db6533e0800000000000000
+      internalID: -2074633490011203935
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_6
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 643
+        width: 230
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6638c75d0e5ea8c0800000000000000
+      internalID: -3986145208775985553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_7
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 568
+        width: 200
+        height: 52
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83458ad835b458ea0800000000000000
+      internalID: -5871203716976585672
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_8
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 17
+        width: 556
+        height: 521
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2aaa079f898e01e60800000000000000
+      internalID: 7931094687517026978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_9
+      rect:
+        serializedVersion: 2
+        x: 581
+        y: 361
+        width: 159
+        height: 132
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: db0230fa6fa45c070800000000000000
+      internalID: 8125983526018556093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_10
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 318
+        width: 235
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3a6c7c9bdd6e8de0800000000000000
+      internalID: -1329004050037052870
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_11
+      rect:
+        serializedVersion: 2
+        x: 591
+        y: 114
+        width: 137
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf3a3a554677d9b40800000000000000
+      internalID: 5448642397005390843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: PLACEHOLDER ATLAS B_12
+      rect:
+        serializedVersion: 2
+        x: 781
+        y: 15
+        width: 236
+        height: 241
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d10423deab8f050e0800000000000000
+      internalID: -2283051529349742563
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 22f1938638d11e842ac8a62f9ecd112b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
