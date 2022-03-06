@@ -19,6 +19,8 @@ public class PjControllerScript : MonoBehaviour {
 
     float speed = 5f;
     bool isTouchingBall;
+    bool canMove = true;
+    bool connected;
 
     BallControllerScript ballScript;
     PhotonView ballPunView;
@@ -33,6 +35,7 @@ public class PjControllerScript : MonoBehaviour {
         ballPunID = ballPunView.ViewID;
         punView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
+        connected = PhotonNetwork.IsConnected;
 
         inputHorizontalAxis.AddListener(HorizontalMovement);
         inputVerticalAxis.AddListener(VerticalMovement);
@@ -40,22 +43,27 @@ public class PjControllerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (PhotonNetwork.IsConnected && !punView.IsMine)
+        if (connected && !punView.IsMine)
             return;
 
-        if(Input.GetAxis("Horizontal") != horInputValue) {
-            horInputValue = Input.GetAxis("Horizontal");
-            inputHorizontalAxis.Invoke(horInputValue);
+        if (canMove) {
+            if(Input.GetAxis("Horizontal") != horInputValue) {
+                horInputValue = Input.GetAxis("Horizontal");
+                inputHorizontalAxis.Invoke(horInputValue);
+            }
+            if (Input.GetAxis("Vertical") != verInputValue) {
+                verInputValue = Input.GetAxis("Vertical");
+                inputVerticalAxis.Invoke(verInputValue);
+            }
+            if (horInputValue != 0 || verInputValue != 0)
+                AverageMoevement();
         }
-        if (Input.GetAxis("Vertical") != verInputValue) {
-            verInputValue = Input.GetAxis("Vertical");
-            inputVerticalAxis.Invoke(verInputValue);
-        }
-        if (horInputValue != 0 || verInputValue != 0)
-            AverageMoevement();
 
         if (isTouchingBall && Input.GetMouseButtonDown(0))
             HitBall();
+
+        if (transform.position.y < -50)
+            transform.position = Vector3.up;
     }
 
     void HorizontalMovement (float value) {
@@ -105,9 +113,15 @@ public class PjControllerScript : MonoBehaviour {
             hitDirection = mouseWorldPos - transform.position;
         }
 
-        if(PhotonNetwork.IsConnected)
-            ballScript.punView.RPC("Hit", RpcTarget.All, hitDirection, ballScript.transform.position, true);
-        else ballScript.Hit(hitDirection, ballScript.transform.position, true);
+        if(connected)
+            ballScript.punView.RPC("Hit", RpcTarget.All, hitDirection, ballScript.transform.position, true, punView.ViewID);
+        else ballScript.Hit(hitDirection, ballScript.transform.position, true, punView.ViewID);
+
+        canMove = false;
+        Invoke("MoveUnFreeze", ballScript.hitFreezeDuration);
+    }
+    void MoveUnFreeze () {
+        canMove = true;
     }
 
     [PunRPC]
@@ -116,7 +130,7 @@ public class PjControllerScript : MonoBehaviour {
             return;
 
         rb.velocity = fullVector;
-        ballPunView.RPC("Hit", RpcTarget.All, ballScript.ballDirection * -1, ballScript.transform.position, false);
+        ballPunView.RPC("Hit", RpcTarget.All, ballScript.ballDirection * -1, ballScript.transform.position, false, punView.ViewID);
         ballPunView.RPC("SetSpeed", RpcTarget.All, ballScript.speedBase);
     }
 }

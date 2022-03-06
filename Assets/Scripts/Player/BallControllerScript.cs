@@ -9,19 +9,25 @@ public class BallControllerScript : MonoBehaviour {
     public float speedBase = 5f;
     [HideInInspector]
     public float speedCurrent = 5f;
-    float speedAcceleration = 1;
+    float speedAcceleration = 2;
     [HideInInspector]
     public Vector3 ballDirection;
     bool moving;
+    bool connected;
+    [HideInInspector]
+    public float hitFreezeDuration;
 
     float xLimits = 6.75f;
     float zLimits = 6.75f;
 
     [HideInInspector]
     public PhotonView punView;
+    Collider ballCol;
 
     void Start() {
         punView = GetComponent<PhotonView>();
+        ballCol = GetComponent<Collider>();
+        connected = PhotonNetwork.IsConnected;
         /*test code
         ballDirection = new Vector3(1, 0, 0.6f).normalized;
         moving = true;
@@ -43,21 +49,36 @@ public class BallControllerScript : MonoBehaviour {
             transform.position = new Vector3(transform.position.x, 1, -zLimits);
 
         if (transform.position.x >= xLimits || transform.position.x <= -xLimits) {
-            Hit((new Vector3(ballDirection.x * -1, 0, ballDirection.z)), transform.position, false);
+            Hit((new Vector3(ballDirection.x * -1, 0, ballDirection.z)), transform.position, false, 0);
         }
         else if (transform.position.z >= zLimits || transform.position.z <= -zLimits) {
-            Hit((new Vector3(ballDirection.x, 0, ballDirection.z * -1)), transform.position, false);
+            Hit((new Vector3(ballDirection.x, 0, ballDirection.z * -1)), transform.position, false, 0);
         }
     }
 
     [PunRPC]
-    public void Hit (Vector3 direction, Vector3 position, bool addSpeed) {
-        if(addSpeed)
+    public void Hit (Vector3 direction, Vector3 position, bool addSpeed, int punID) {
+        if (addSpeed) {
             speedCurrent += speedAcceleration;
+            if (!PhotonView.Find(punID).IsMine) {
+                float lagCompensation = PhotonNetwork.GetPing() * 0.002f;
+                hitFreezeDuration = (speedCurrent * 0.1f) - lagCompensation;
+            }
+            else hitFreezeDuration = speedCurrent * 0.1f;
+        }
+
         transform.position = new Vector3(position.x, 1, position.z);
+        //ballCol.enabled = false;
         Vector3 newDirection = new Vector3(direction.x, 0, direction.z);
         ballDirection = newDirection.normalized;
+        moving = false;
+        if (!addSpeed)
+            HitUnFreeze();
+        else Invoke("HitUnFreeze", hitFreezeDuration);
+    }
+    void HitUnFreeze () {
         moving = true;
+        //ballCol.enabled = false;
     }
 
     void Displace () {
@@ -65,26 +86,20 @@ public class BallControllerScript : MonoBehaviour {
     }
 
     private void OnTriggerEnter (Collider col) {
-        /*if (col.CompareTag("Wall")) {
-            Vector3 ballPos = transform.position;
-            Vector3 colPoint = col.ClosestPoint(ballPos);
-            Vector3 newDirection = Vector3.zero;
-
-            if (Mathf.Abs(ballPos.x - colPoint.x) > Mathf.Abs(ballPos.z - colPoint.z))
-                newDirection = new Vector3(ballDirection.x * -1, 0, ballDirection.z);
-            else newDirection = new Vector3(ballDirection.x, 0, ballDirection.z * -1);
-
-            Hit(newDirection, transform.position);
-        }*/
+        if (!moving)
+            return;
         if (col.CompareTag("Player")) {
             if(col == col.GetComponents<Collider>()[1]) {
-                if (PhotonNetwork.IsConnected) {
-                    if (col.GetComponent<PhotonView>().IsMine)
-                        col.GetComponent<PhotonView>().RPC("BallCrush", RpcTarget.All, new Vector3(ballDirection.x, 0.5f, ballDirection.z) * (speedCurrent / 1.5f));
+                if (connected) {
+                    PhotonView colledPun = col.GetComponent<PhotonView>();
+                    if (colledPun.IsMine) {
+                        Photon.Realtime.Player colledPlayer = colledPun.Controller;
+                        colledPun.RPC("BallCrush", colledPlayer, new Vector3(ballDirection.x, 0.5f, ballDirection.z) * (speedCurrent / 1.5f));
+                    }
                 }
                 else {
                     col.attachedRigidbody.velocity = new Vector3(ballDirection.x, 0.5f, ballDirection.z) * (speedCurrent / 1.5f);
-                    Hit(ballDirection * -1, transform.position, false);
+                    Hit(ballDirection * -1, transform.position, false, 0);
                     SetSpeed(speedBase);
                 }
             }
