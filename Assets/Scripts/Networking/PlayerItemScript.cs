@@ -23,6 +23,7 @@ public class PlayerItemScript : MonoBehaviourPunCallbacks
     {
         playerName.text = _player.NickName;
         player = _player;
+        playerProperties["playerName"] = playerName.text;
         UpdatePlayerItem(player);
     }
     public void ApplyLocalChanges()
@@ -57,10 +58,13 @@ public class PlayerItemScript : MonoBehaviourPunCallbacks
     }
     public override void OnPlayerPropertiesUpdate(Player targetPlayer, ExitGames.Client.Photon.Hashtable changedProps)
     {
-        UpdatePlayerItem(targetPlayer);
+        if (player == targetPlayer){
+            UpdatePlayerItem(targetPlayer);
+        }
+
     }
     void UpdatePlayerItem(Player player)
-    {
+    {   
         if(player.CustomProperties.ContainsKey("playerAvatar"))
         {
             playerAvatar.sprite = avatars[(int)player.CustomProperties["playerAvatar"]];

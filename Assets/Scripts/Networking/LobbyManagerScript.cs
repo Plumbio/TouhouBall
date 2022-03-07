@@ -37,13 +37,11 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
         if(roomInputField.text.Length >= 1)
         {
             PhotonNetwork.CreateRoom(roomInputField.text, new RoomOptions() { MaxPlayers = 4, BroadcastPropsChangeToAll = true });
-            print("Creo la sala" + roomInputField.text);
         }
     }
 
     public override void OnJoinedRoom() 
     {
-        print("entro a la sala");
         lobbyPanel.SetActive(false);
         roomPanel.SetActive(true);
         roomName.text = "Room Name: " + PhotonNetwork.CurrentRoom.Name;
@@ -67,11 +65,8 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
             Destroy(item.gameObject);
         }
         roomItemsList.Clear();
-        print("paso el clear");
         foreach (RoomInfo room in list)
         {
-            print("room");
-            print(room.Name);
             RoomItemScript newRoom = Instantiate(roomItemPrefab, contentObject);
             newRoom.SetRoomName(room.Name);
             roomItemsList.Add(newRoom);
@@ -94,7 +89,6 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
     }
     public override void OnConnectedToMaster()
     {
-        print("OnConnectedToMaster");
         PhotonNetwork.JoinLobby();
     }
     void UpdatePlayerList()
@@ -114,9 +108,11 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
         foreach (KeyValuePair<int, Player> player in PhotonNetwork.CurrentRoom.Players)
         {
             PlayerItemScript newPlayerItem = Instantiate(playerItemPrefab, playerItemparent);
+
             newPlayerItem.SetPlayerInfo(player.Value);
             if (player.Value == PhotonNetwork.LocalPlayer)
             {
+                Debug.Log("owowowowo");
                 newPlayerItem.ApplyLocalChanges();
             }
             playerItemsList.Add(newPlayerItem);
