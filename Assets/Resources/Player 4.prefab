@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &6728486581261511015
+--- !u!1001 &4725307538599173984
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     - target: {fileID: 4773583360920265893, guid: 58d51e800da63c143ab2c59ed22d70c7,
         type: 3}
       propertyPath: m_Name
-      value: Player 2
+      value: Player 4
       objectReference: {fileID: 0}
     - target: {fileID: 4773583360920265894, guid: 58d51e800da63c143ab2c59ed22d70c7,
         type: 3}
@@ -71,7 +71,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: -2074633490011203935, guid: f7f27a210d470dd4c9dafbe7959fabc4,
+      objectReference: {fileID: -2283051529349742563, guid: f7f27a210d470dd4c9dafbe7959fabc4,
         type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 58d51e800da63c143ab2c59ed22d70c7, type: 3}

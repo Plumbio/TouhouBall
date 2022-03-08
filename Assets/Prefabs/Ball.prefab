@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 4751646861990342512}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -47,6 +47,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba171605c7c6cde4c909d3cd3f821084, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  speedBase: 5
+  speedCurrent: 5
+  ballDirection: {x: 0, y: 0, z: 0}
+  hitFreezeDuration: 0
   punView: {fileID: 0}
 --- !u!114 &876144273258812162
 MonoBehaviour:
