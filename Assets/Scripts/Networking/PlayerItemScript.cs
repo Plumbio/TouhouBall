@@ -18,6 +18,8 @@ public class PlayerItemScript : MonoBehaviourPunCallbacks
     Player player;
     private void Start() {
         // backgroundImage = GetComponent<Image>();
+        playerProperties["playerAvatar"] = 0;
+        PhotonNetwork.SetPlayerCustomProperties(playerProperties);
     }
     public void SetPlayerInfo(Player _player)
     {

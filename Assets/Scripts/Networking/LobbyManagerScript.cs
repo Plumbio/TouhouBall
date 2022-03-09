@@ -113,7 +113,6 @@ public class LobbyManagerScript : MonoBehaviourPunCallbacks
             newPlayerItem.SetPlayerInfo(player.Value);
             if (player.Value == PhotonNetwork.LocalPlayer)
             {
-                Debug.Log("owowowowo");
                 newPlayerItem.ApplyLocalChanges();
             }
             playerItemsList.Add(newPlayerItem);
