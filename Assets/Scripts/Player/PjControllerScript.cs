@@ -20,6 +20,7 @@ public class PjControllerScript : MonoBehaviour {
     float speed = 5f;
     bool isTouchingBall;
     bool canMove = true;
+    bool hittingBall;
     bool connected;
 
     BallControllerScript ballScript;
@@ -102,6 +103,9 @@ public class PjControllerScript : MonoBehaviour {
     }
 
     void HitBall () {
+        if (hittingBall || ballScript.beingHit)
+            return;
+        hittingBall = true;
         Vector3 hitDirection = Vector3.zero;
         Vector3 mouseWorldPos;
 
@@ -110,7 +114,7 @@ public class PjControllerScript : MonoBehaviour {
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (plane.Raycast(ray, out distance)) {
             mouseWorldPos = ray.GetPoint(distance);
-            hitDirection = mouseWorldPos - transform.position;
+            hitDirection = mouseWorldPos - ballScript.transform.position;
         }
 
         if(connected)
@@ -122,6 +126,7 @@ public class PjControllerScript : MonoBehaviour {
     }
     void MoveUnFreeze () {
         canMove = true;
+        hittingBall = false;
     }
 
     [PunRPC]

@@ -15,6 +15,8 @@ public class BallControllerScript : MonoBehaviour {
     bool moving;
     bool connected;
     [HideInInspector]
+    public bool beingHit;
+    [HideInInspector]
     public float hitFreezeDuration;
 
     float xLimits = 6.75f;
@@ -23,6 +25,7 @@ public class BallControllerScript : MonoBehaviour {
     [HideInInspector]
     public PhotonView punView;
     Collider ballCol;
+    Collider pjHitCol;
 
     void Start() {
         punView = GetComponent<PhotonView>();
@@ -58,9 +61,14 @@ public class BallControllerScript : MonoBehaviour {
 
     [PunRPC]
     public void Hit (Vector3 direction, Vector3 position, bool addSpeed, int punID) {
+        pjHitCol = null;
+
         if (addSpeed) {
+            beingHit = true;
             speedCurrent += speedAcceleration;
-            if (!PhotonView.Find(punID).IsMine) {
+            PhotonView pjPunView = PhotonView.Find(punID);
+            pjHitCol = pjPunView.gameObject.GetComponents<Collider>()[0];
+            if (!pjPunView.IsMine) {
                 float lagCompensation = PhotonNetwork.GetPing() * 0.002f;
                 hitFreezeDuration = (speedCurrent * 0.1f) - lagCompensation;
             }
@@ -88,7 +96,7 @@ public class BallControllerScript : MonoBehaviour {
     private void OnTriggerEnter (Collider col) {
         if (!moving)
             return;
-        if (col.CompareTag("Player")) {
+        if (col.CompareTag("Player") && !beingHit) {
             if(col == col.GetComponents<Collider>()[1]) {
                 if (connected) {
                     PhotonView colledPun = col.GetComponent<PhotonView>();
@@ -104,6 +112,14 @@ public class BallControllerScript : MonoBehaviour {
                 }
             }
         }
+    }
+    private void OnTriggerExit (Collider col) {
+        if (beingHit && col == pjHitCol) {
+            pjHitCol = null;
+            beingHit = false;
+        }
+        else if (beingHit && pjHitCol == null)
+            beingHit = false;
     }
 
     [PunRPC]
