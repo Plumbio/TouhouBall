@@ -44,24 +44,24 @@ public class PjControllerScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
-        if (connected && !punView.IsMine)
-            return;
+        if (connected && punView.IsMine) {
+            if (canMove) {
+                if(Input.GetAxis("Horizontal") != horInputValue) {
+                    horInputValue = Input.GetAxis("Horizontal");
+                    inputHorizontalAxis.Invoke(horInputValue);
+                }
+                if (Input.GetAxis("Vertical") != verInputValue) {
+                    verInputValue = Input.GetAxis("Vertical");
+                    inputVerticalAxis.Invoke(verInputValue);
+                }
+                if (horInputValue != 0 || verInputValue != 0)
+                    AverageMoevement();
+            }
 
-        if (canMove) {
-            if(Input.GetAxis("Horizontal") != horInputValue) {
-                horInputValue = Input.GetAxis("Horizontal");
-                inputHorizontalAxis.Invoke(horInputValue);
-            }
-            if (Input.GetAxis("Vertical") != verInputValue) {
-                verInputValue = Input.GetAxis("Vertical");
-                inputVerticalAxis.Invoke(verInputValue);
-            }
-            if (horInputValue != 0 || verInputValue != 0)
-                AverageMoevement();
+            if (isTouchingBall && Input.GetMouseButtonDown(0))
+                HitBall();
         }
 
-        if (isTouchingBall && Input.GetMouseButtonDown(0))
-            HitBall();
 
         if (transform.position.y < -50)
             transform.position = Vector3.up;
