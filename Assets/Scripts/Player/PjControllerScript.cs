@@ -37,6 +37,10 @@ public class PjControllerScript : MonoBehaviour {
         punView = GetComponent<PhotonView>();
         rb = GetComponent<Rigidbody>();
         connected = PhotonNetwork.IsConnected;
+        if (!punView.IsMine) {
+            GetComponents<Collider>()[1].enabled = false;
+            rb.isKinematic = true;
+        }
 
         inputHorizontalAxis.AddListener(HorizontalMovement);
         inputVerticalAxis.AddListener(VerticalMovement);

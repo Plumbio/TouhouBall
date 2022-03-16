@@ -6,10 +6,10 @@ using Photon.Pun;
 public class BallControllerScript : MonoBehaviour {
 
     [HideInInspector]
-    public float speedBase = 5f;
+    public readonly float speedBase = 5f;
     [HideInInspector]
     public float speedCurrent = 5f;
-    float speedAcceleration = 2;
+    readonly float speedAcceleration = 3;
     [HideInInspector]
     public Vector3 ballDirection;
     bool moving;
@@ -18,6 +18,11 @@ public class BallControllerScript : MonoBehaviour {
     public bool beingHit;
     [HideInInspector]
     public float hitFreezeDuration;
+
+    //Compensación de Lag
+    List<int> pingList = new List<int>();
+    float pingTimer = 0;
+    float pingTime = 3;
 
     float xLimits = 6.75f;
     float zLimits = 6.75f;
@@ -57,6 +62,13 @@ public class BallControllerScript : MonoBehaviour {
         else if (transform.position.z >= zLimits || transform.position.z <= -zLimits) {
             Hit((new Vector3(ballDirection.x, 0, ballDirection.z * -1)), transform.position, false, 0);
         }
+
+        if (pingTimer > 0)
+            pingTimer -= Time.deltaTime;
+        else {
+            pingTimer = pingTime;
+            pingList.Add(PhotonNetwork.GetPing());
+        }
     }
 
     [PunRPC]
@@ -69,10 +81,14 @@ public class BallControllerScript : MonoBehaviour {
             PhotonView pjPunView = PhotonView.Find(punID);
             pjHitCol = pjPunView.gameObject.GetComponents<Collider>()[0];
             if (!pjPunView.IsMine) {
-                float lagCompensation = PhotonNetwork.GetPing() * 0.002f;
-                hitFreezeDuration = (speedCurrent * 0.1f) - lagCompensation;
+                float lagCompensation = GetPingAvg() + 0.1f;
+                if((speedCurrent * 0.05f) - lagCompensation >= 0.1f) {
+                    hitFreezeDuration = (speedCurrent * 0.05f) - lagCompensation;
+                    //print(lagCompensation + " ms - " + (speedCurrent * 0.05f) + " hitfreeze");
+                }
+                else hitFreezeDuration = speedCurrent * 0.05f;
             }
-            else hitFreezeDuration = speedCurrent * 0.1f;
+            else hitFreezeDuration = speedCurrent * 0.05f;
         }
 
         transform.position = new Vector3(position.x, 1, position.z);
@@ -125,5 +141,14 @@ public class BallControllerScript : MonoBehaviour {
     [PunRPC]
     public void SetSpeed (float speed) {
         speedCurrent = speed;
+    }
+
+    float GetPingAvg () {
+        int pingAvg = 0;
+        foreach (int ping in pingList)
+            pingAvg += ping;
+        pingAvg /= pingList.Count;
+
+        return pingAvg * 0.001f;
     }
 }
